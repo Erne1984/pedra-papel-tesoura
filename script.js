@@ -10,7 +10,9 @@ function getPlayerChoice() {
 
     validatingInput(choice);
 
-    choiceFinal = choice.toLocaleLowerCase;
+    const choiceFinal = choice.toLocaleLowerCase();
+
+    console.log(choiceFinal);
 
     return choiceFinal;
 }
@@ -35,14 +37,42 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == "tesoura" && computerSelection == "papel") ||
         (playerSelection == "papel" && computerSelection == "pedra")) {
 
-        return "Player wins"
+        return "player"
     } else {
-        return "Machine wins"
+        return "machine"
     }
 
 }
 
+function game(){
 
+    let playerPoints = 0;
+    let machinePoints = 0;
+    
+    for(let i = 1; i < 6; i++){
 
-console.log(playRound(getPlayerChoice(), getComputerChoice()))
+        console.log(`Rodada ${i}`)
 
+        const result = playRound(getPlayerChoice(), getComputerChoice());
+
+        if(result == "player"){
+            playerPoints += 1;
+            console.log("Ponto do player")
+        } else if(result == "machine"){
+            machinePoints += 1;
+            console.log("Ponto da maquina")
+        }else{
+            console.log("empate")
+        }
+    }
+
+    if(playerPoints === machinePoints){
+        console.log("Foi um empate") 
+    } else if(playerPoints > machinePoints){
+        console.log("O jogador ganhou") 
+    } else{
+        console.log("A maquina ganhou")     
+    }
+}
+
+game();
