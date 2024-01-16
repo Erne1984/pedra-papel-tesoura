@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital@1&family=Overpass&family=Poppins:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <title>Pedra Papel e Tesoura</title>
 </head>
+
 <body>
 
     <header>
         <h1>Pedra papel e tesoura</h1>
     </header>
 
-    <div>
-        <h2>Primeiro a marcar 5 ganha</h2> 
+    <div class="box-info">
+        <h2>Primeiro a marcar 5 ganha</h2>
         <span id="round"></span>
     </div>
 
     <section class="box-points">
-        <div class="box">Player Points: <span id="player">0</span></div>
-        <div class="box">Computer Points: <span id="machine">0</span></div>
+        <div class="box">Player: <span id="player">0</span></div>
+        <div class="box">Computer: <span id="machine">0</span></div>
     </section>
 
     <main class="box-btns">
 
 
-        <button id="btnRock">Pedra</button>
-        <button id="btnScissor">Tesoura</button>
-        <button id="btnPapper">Papel</button>
+        <button id="btnRock">✊</button>
+        <button id="btnScissor">✌</button>
+        <button id="btnPapper">✋</button>
 
     </main>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
