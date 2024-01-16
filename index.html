@@ -15,18 +15,36 @@
 
 <body>
 
+
+
+    <div class="modal modal-none" id="modal">
+
+        <div class="modal-content">
+
+            <p id="winner">Vencedor</p>
+            <button id="restart">jogar novamente?</button>
+
+        </div>
+
+    </div>
+
     <header>
         <h1>Pedra papel e tesoura</h1>
     </header>
 
     <div class="box-info">
-        <h2>Primeiro a marcar 5 ganha</h2>
-        <span id="round"></span>
+        <h2 id="round">Primeiro a marcar 5 ganha pontos</h2>
     </div>
 
     <section class="box-points">
-        <div class="box">Player: <span id="player">0</span></div>
-        <div class="box">Computer: <span id="machine">0</span></div>
+        <div class="box">
+            <div class="icon" id="playerChoice">❓</div>
+            <div class="points" id="player">0</div>
+        </div>
+        <div class="box">
+            <div class="icon" id="machineChoice">❓</div>
+            <div class="points" id="machine">0</div>
+        </div>
     </section>
 
     <main class="box-btns">

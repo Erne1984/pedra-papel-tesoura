@@ -5,6 +5,11 @@ const roundDisplay = document.querySelector("#round");
 const count = document.querySelector("#count");
 const playerPointsDisplay = document.querySelector("#player");
 const machinePointsDisplay = document.querySelector("#machine");
+const playerChoice = document.querySelector("#playerChoice");
+const machineChoice = document.querySelector("#machineChoice");
+const modal = document.querySelector("#modal");
+const winner = document.querySelector("#winner");
+const btnRestart = document.querySelector("#restart");
 
 let playerPoints = 0;
 let machinePoints = 0;
@@ -20,6 +25,8 @@ function playRound(playerSelection, computerSelection) {
 
     let result = "";
 
+    displayingChoice(playerSelection, computerSelection);
+
     if (playerSelection === computerSelection) {
         result = "draw"
     } else if (
@@ -33,11 +40,11 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if (result == "player") {
-        roundDisplay.textContent = "Ponto do player"
+        roundDisplay.textContent = "Ponto do Jogador"
         playerPoints += 1;
         playerPointsDisplay.textContent = playerPoints;
     } else if (result == "machine") {
-        roundDisplay.textContent = "Ponto da maquina"
+        roundDisplay.textContent = "Ponto da Máquina"
         machinePoints += 1;
         machinePointsDisplay.textContent = machinePoints;
     } else {
@@ -46,8 +53,25 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerPoints === 5 || machinePoints === 5) {
         game(playerPoints, machinePoints)
-        playerPoints = 0;
-        machinePoints = 0;
+    }
+
+}
+
+function displayingChoice(playerSelection, machineSelection) {
+    if (playerSelection == "pedra") {
+        playerChoice.textContent = "✊";
+    } else if (playerSelection == "tesoura") {
+        playerChoice.textContent = "✌";
+    } else {
+        playerChoice.textContent = "✋"
+    }
+
+    if (machineSelection == "pedra") {
+        machineChoice.textContent = "✊";
+    } else if (machineSelection == "tesoura") {
+        machineChoice.textContent = "✌";
+    } else {
+        machineChoice.textContent = "✋"
     }
 
 }
@@ -55,18 +79,25 @@ function playRound(playerSelection, computerSelection) {
 function game(playerPoints, machinePoints) {
 
     if (playerPoints > machinePoints) {
-        alert("O jogador ganhou")
-        playerPointsDisplay.textContent = 0;
-        machinePointsDisplay.textContent = 0;
-        roundDisplay.textContent = "";
+        modal.classList.toggle('modal-none')
+        winner.textContent = "Você Ganhou!"
     } else {
-        alert("A maquina ganhou")
-        playerPointsDisplay.textContent = 0;
-        machinePointsDisplay.textContent = 0;
-        roundDisplay.textContent = "";
+        modal.classList.toggle('modal-none')
+        winner.textContent = "Você Perdeu!"
     }
 }
 
+function restart() {
+    modal.classList.toggle('modal-none')
+    roundDisplay.textContent = "Primeiro a marcar 5 ganha pontos";
+    playerPointsDisplay.textContent = 0;
+    machinePointsDisplay.textContent = 0;
+    roundDisplay.textContent = "";
+    playerPoints = 0;
+    machinePoints = 0;
+}
+
+btnRestart.addEventListener('click', () => restart());
 
 btnPapper.addEventListener('click', () => playRound("papel", getComputerChoice()));
 btnRock.addEventListener('click', () => playRound("pedra", getComputerChoice()));
