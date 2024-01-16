@@ -1,0 +1,26 @@
+h1{
+    text-align: center;
+}
+
+.box-points{
+    display: flex;
+    justify-content: center;
+}
+
+.box-points .box{
+    margin: 5px;
+}
+
+.box-btns{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.box-btns button{
+    
+}
+
+.box-btns button:hover{
+    cursor: pointer;
+}

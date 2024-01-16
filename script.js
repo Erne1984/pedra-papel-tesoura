@@ -3,6 +3,11 @@ const btnScissor = document.querySelector("#btnScissor");
 const btnRock = document.querySelector("#btnRock");
 const roundDisplay = document.querySelector("#round");
 const count = document.querySelector("#count");
+const playerPointsDisplay = document.querySelector("#player");
+const machinePointsDisplay = document.querySelector("#machine");
+
+let playerPoints = 0;
+let machinePoints = 0;
 
 function getComputerChoice() {
 
@@ -29,55 +34,40 @@ function playRound(playerSelection, computerSelection) {
 
     if (result == "player") {
         roundDisplay.textContent = "Ponto do player"
+        playerPoints += 1;
+        playerPointsDisplay.textContent = playerPoints;
     } else if (result == "machine") {
         roundDisplay.textContent = "Ponto da maquina"
+        machinePoints += 1;
+        machinePointsDisplay.textContent = machinePoints;
     } else {
         roundDisplay.textContent = "Empate"
     }
 
-}
-
-function game() {
-
-    let playerPoints = 0;
-    let machinePoints = 0;
-
-    for (let i = 1; i < 6; i++) {
-
-        console.log(`Rodada ${i}`)
-
-        const result = playRound(getPlayerChoice(), getComputerChoice());
-
-        if (result == "player") {
-            playerPoints += 1;
-            console.log("Ponto do player")
-        } else if (result == "machine") {
-            machinePoints += 1;
-            console.log("Ponto da maquina")
-        } else {
-            console.log("empate")
-        }
+    if (playerPoints === 5 || machinePoints === 5) {
+        game(playerPoints, machinePoints)
+        playerPoints = 0;
+        machinePoints = 0;
     }
 
-    if (playerPoints === machinePoints) {
-        console.log("Foi um empate")
-    } else if (playerPoints > machinePoints) {
-        console.log("O jogador ganhou")
+}
+
+function game(playerPoints, machinePoints) {
+
+    if (playerPoints > machinePoints) {
+        alert("O jogador ganhou")
+        playerPointsDisplay.textContent = 0;
+        machinePointsDisplay.textContent = 0;
+        roundDisplay.textContent = "";
     } else {
-        console.log("A maquina ganhou")
+        alert("A maquina ganhou")
+        playerPointsDisplay.textContent = 0;
+        machinePointsDisplay.textContent = 0;
+        roundDisplay.textContent = "";
     }
 }
 
 
-btnPapper.addEventListener('click', () => {
-    playRound("papel", getComputerChoice())
-
-});
-btnRock.addEventListener('click', () => {
-    playRound("pedra", getComputerChoice())
-
-});
-btnScissor.addEventListener('click', () => {
-    playRound("tesoura", getComputerChoice())
-
-});
+btnPapper.addEventListener('click', () => playRound("papel", getComputerChoice()));
+btnRock.addEventListener('click', () => playRound("pedra", getComputerChoice()));
+btnScissor.addEventListener('click', () => playRound("tesoura", getComputerChoice()));

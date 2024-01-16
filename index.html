@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Pedra Papel e Tesoura</title>
 </head>
 <body>
 
@@ -12,16 +12,18 @@
         <h1>Pedra papel e tesoura</h1>
     </header>
 
-    <div id="round"></div>
+    <div>
+        <h2>Primeiro a marcar 5 ganha</h2> 
+        <span id="round"></span>
+    </div>
 
-    <section>
-        <div>Player Points: <span id="player"></span></div>
-        <div>Computer Points: <span id="machine"></span></div>
+    <section class="box-points">
+        <div class="box">Player Points: <span id="player">0</span></div>
+        <div class="box">Computer Points: <span id="machine">0</span></div>
     </section>
 
-    <main class="container">
+    <main class="box-btns">
 
-        <span id="count"></span>
 
         <button id="btnRock">Pedra</button>
         <button id="btnScissor">Tesoura</button>
